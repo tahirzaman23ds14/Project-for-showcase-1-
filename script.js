@@ -3,26 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuContainer = document.getElementById('menuContainer');
   const navLinks = document.querySelectorAll('.options a');
 
-  function updateMenuState(isOpen) {
+  function toggleMenu(isOpen) {
     menuContainer.classList.toggle('show', isOpen);
     hamburger.classList.toggle('active', isOpen);
     hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
 
   hamburger.addEventListener('click', () => {
-    const willBeOpen = !menuContainer.classList.contains('show');
-    updateMenuState(willBeOpen);
+    const willOpen = !menuContainer.classList.contains('show');
+    toggleMenu(willOpen);
   });
 
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (menuContainer.classList.contains('show')) updateMenuState(false);
-    });
+    link.addEventListener('click', () => toggleMenu(false));
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menuContainer.classList.contains('show')) {
-      updateMenuState(false);
+      toggleMenu(false);
     }
   });
 });
