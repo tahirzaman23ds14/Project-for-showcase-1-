@@ -1,0 +1,173 @@
+/* Reset some browser defaults (unchanged) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set up the body (colors preserved) */
+body {
+  background-color: #280202;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* NAVBAR — keep your original look but fix layout mechanics */
+#nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ensure left, center, right alignment */
+  height: 80px;
+  width: 100%;
+  background-color: rgba(22, 7, 7, 0.926);
+  border-bottom: 2px solid wheat;
+  padding: 0 4%; /* small horizontal padding instead of % margins on children */
+  position: relative;
+}
+
+/* Name (left) — colors preserved, removed % margins so layout is flexible) */
+.name {
+  display: flex;
+  align-items: center; /* keeps them vertically aligned */
+  gap: 1px; /* small spacing between h3 and h4 */
+  flex: 0 0 auto; /* do not stretch */
+}
+
+.name > h3 {
+  color: antiquewhite;
+}
+
+.name > h4 {
+  font-size: large;
+  color: #a93737;
+}
+
+/* menu-container wraps options + links (desktop: inline row; mobile: stacked) */
+/* Ensure on desktop it behaves as two parts: center (options) and right (links) */
+.menu-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1 1 auto; /* allow to take available space between .name and hamburger if needed */
+  justify-content: center; /* center options by default */
+}
+
+/* Options (center) */
+.options {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex: 1 1 auto; /* occupy remaining center space */
+  justify-content: center; /* center links within this area */
+}
+
+/* Links (right within menu-container) */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto; /* do not stretch */
+}
+
+/* Links inside .options (colors preserved) */
+.options > a {
+  color: #d2d2d2;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.options > a:hover {
+  color: #ffffff;
+}
+
+.options > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #a93737;
+  transition: width 0.3s ease;
+}
+
+.options > a:hover::after {
+  width: 100%;
+}
+
+/* Social icons: keep white fills/strokes — spacing preserved */
+.links svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Hamburger: hidden on desktop */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+/* ------------ RESPONSIVE RULES ------------ */
+
+/* Tablet / small laptop breakpoint */
+@media (max-width: 900px) {
+  /* Keep nav padding a little smaller on narrow screens */
+  #nav {
+    padding: 0 16px;
+  }
+
+  /* On narrow screens: we hide the inline options/links and show the hamburger */
+  .menu-container {
+    /* become the panel that will be shown/hidden — initially hidden (via .show toggling) */
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(22, 7, 7, 0.97);
+    padding: 18px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: none; /* hidden until hamburger toggles .show */
+    z-index: 50;
+  }
+
+  /* when hamburger is clicked we add .show in JS — reveal as column */
+  .menu-container.show {
+    display: flex;
+  }
+
+  /* options stack vertically in mobile menu */
+  .options {
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  /* social icons row in mobile menu (preserve white icons) */
+  .links {
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  /* show hamburger on mobile */
+  .hamburger {
+    display: block;
+  }
+
+  /* make sure .name stays left and doesn't wrap weirdly */
+  .name {
+    z-index: 60;
+  }
+}
+
+/* Extra small screens: scale text slightly so it fits */
+@media (max-width: 500px) {
+  .name > h3 { font-size: 18px; }
+  .name > h4 { font-size: 16px; }
+  .options > a { font-size: 16px; }
+}
