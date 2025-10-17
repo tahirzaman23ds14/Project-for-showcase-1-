@@ -55,13 +55,14 @@ body {
   align-items: center;
   gap: 30px;
   margin-left: 33%;
-}
+} 
 
 .options a {
   color: #d2d2d2;
   text-decoration: none;
   position: relative;
   transition: color 0.3s ease;
+  
 }
 
 .options a:hover {
@@ -111,7 +112,7 @@ body {
 .hamburger span {
   position: absolute;
   height: 4px;
-  width: 100%;
+  width: 10%;
   background-color: wheat;
   border-radius: 5px;
   left: 0;
