@@ -112,7 +112,7 @@ body {
 .hamburger span {
   position: absolute;
   height: 4px;
-  width: 10%;
+  width: 100%;
   background-color: wheat;
   border-radius: 5px;
   left: 0;
