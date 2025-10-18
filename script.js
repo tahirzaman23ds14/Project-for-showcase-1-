@@ -1,26 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger');
-  const menuContainer = document.getElementById('menuContainer');
-  const navLinks = document.querySelectorAll('.options a');
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileLinks = mobileMenu.querySelectorAll("a");
 
-  function toggleMenu(isOpen) {
-    menuContainer.classList.toggle('show', isOpen);
-    hamburger.classList.toggle('active', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  }
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  mobileMenu.classList.toggle("show");
+});
 
-  hamburger.addEventListener('click', () => {
-    const willOpen = !menuContainer.classList.contains('show');
-    toggleMenu(willOpen);
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => toggleMenu(false));
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menuContainer.classList.contains('show')) {
-      toggleMenu(false);
-    }
+mobileLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    mobileLinks.forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+    hamburger.classList.remove("active");
+    mobileMenu.classList.remove("show");
   });
 });
