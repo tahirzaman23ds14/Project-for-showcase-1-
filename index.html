@@ -31,7 +31,7 @@
 
     <nav class="nav-center" id="desktop-options">
       <a href="#" class="active">Home</a>
-      <a href="#">About</a>
+      <a href="#about">About</a>
       <a href="#">Projects</a>
       <a href="#">Contact</a>
     </nav>
@@ -62,7 +62,7 @@
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <div class="mobile-links">
       <a href="#" class="active">Home</a>
-      <a href="#">About</a>
+      <a href="#about">About</a>
       <a href="#">Projects</a>
       <a href="#">Contact</a>
     </div>
@@ -75,13 +75,13 @@
   </div>
 
   <main>
+    <!-- HERO SECTION -->
     <section class="mainbody">
       <div class="context">
         <p class="intro">Hello, I’m Amine 👋</p>
         <h1><span id="changing-text"></span><span class="cursor">|</span></h1>
         <p class="desc">Expanding skills and discovering new ways to innovate</p>
 
-        <!-- Download + social icons under context (visible on all sizes) -->
         <div class="context-cta">
           <a class="btn download-btn" href="assets/Amine-CV.pdf" download>Download CV</a>
 
@@ -112,6 +112,43 @@
           <img src="js.png" class="icon" alt="JavaScript">
           <img src="react.png" class="icon" alt="React">
           <img src="python.png" class="icon" alt="Python">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-container">
+        <div class="about-left">
+          <p class="about-text">
+            I’m Amine, a computer science student exploring diverse fields of technology — 
+            from software and web development to artificial intelligence solutions. 
+            My goal is to continuously grow my skills and expand my horizons.
+          </p>
+
+          <h3 class="skills-title">Skills & Technologies</h3>
+          <div class="skills-list">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>React</span>
+            <span>Node.js</span>
+            <span>Git</span>
+            <span>Responsive Design</span>
+            <span>UI/UX</span>
+            <span>C</span>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <div class="code-box">
+            <pre><code>const developer = {
+  name: 'Amine',
+  role: 'Computer Science Student',
+  passion: 'Expanding skills and discovering new ways to innovate'
+}</code></pre>
+          </div>
         </div>
       </div>
     </section>

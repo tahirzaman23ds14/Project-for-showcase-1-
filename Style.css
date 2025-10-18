@@ -104,6 +104,7 @@ body{
   display:flex;
   flex-direction:column;
   gap:18px;
+  box-shadow: -20px 0 40px rgba(0,0,0,0.6);
 }
 .mobile-menu.show{ transform: translateX(0); }
 .mobile-links a{
@@ -284,4 +285,143 @@ body{
 @media (max-width:380px){
   .context h1{ font-size:1.6rem }
   .profile-pic{ width:140px;height:140px }
+}
+
+/* -----------------------------
+   ABOUT SECTION (ADDED)
+   - Non-invasive additions only
+------------------------------*/
+.about-section {
+  background: radial-gradient(circle at 20% 20%, rgba(169, 55, 55, 0.08), transparent 40%), var(--bg);
+  padding: 80px 5% 100px;
+  color: var(--muted);
+  text-align: center;
+  /* keep stacking same as other sections */
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 36px;
+  text-decoration: underline solid var(--accent) 3px;
+  text-underline-offset: 10px;
+}
+
+.about-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.about-left {
+  max-width: 600px;
+  /* initial hidden state for reveal (non-destructive) */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about-right {
+  max-width: 480px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about-section.visible .about-left,
+.about-section.visible .about-right {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.skills-title {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-list span {
+  background: rgba(169, 55, 55, 0.15);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.skills-list span:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px rgba(169, 55, 55, 0.5);
+}
+
+/* Code Box - keeps the mono look and subtle glow */
+.code-box {
+  background: rgba(10, 10, 10, 0.6);
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 0 15px rgba(169, 55, 55, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+  max-width: 420px;
+  transition: all 0.4s ease;
+}
+
+/* small hover effect consistent with other hover interactions */
+.code-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(169, 55, 55, 0.22);
+}
+
+pre { margin: 0; white-space: pre-wrap; }
+
+/* RESPONSIVE ADJUSTMENTS FOR ABOUT (follow same breakpoints) */
+@media (max-width: 880px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .about-left, .about-right {
+    max-width: 100%;
+    text-align: center;
+  }
+  .skills-list {
+    justify-content: center;
+  }
+}
+
+/* small accessibility helper: ensure focused links visible */
+a:focus { outline: 3px solid rgba(169,55,55,0.18); outline-offset: 3px; }
+
+/* keep footer and other CSS intact - no changes below */
+.footer{ text-align:center;padding:22px 0;color:rgba(255,255,255,0.6);border-top:1px solid rgba(255,255,255,0.03);transition:color .3s;}
+.footer:hover{color:var(--accent);}
+
+/* END OF FILE */
+/* Active link highlight on scroll */
+.nav-links a.active {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(169, 55, 55, 0.7);
+  font-weight: 700;
 }
