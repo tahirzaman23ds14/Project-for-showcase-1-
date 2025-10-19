@@ -147,3 +147,106 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// ---------- Projects section reveal ----------
+const projects = document.querySelector('.projects-section');
+if (projects) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        projects.classList.add('visible');
+        obs.unobserve(projects);
+      }
+    });
+  }, { threshold: 0.25 });
+  observer.observe(projects);
+}
+
+// Data array for 6 cards — replace image paths with your own images
+const cards = [
+  { 
+    title:"Weather Dashboard", 
+    desc:"Interactive weather dashboard with location-based forecasts and data visualization.", 
+    img:"Weather web.jpeg", 
+    tags:["JavaScript","Chart.js","OpenWeather API"],
+    demo:"https://your-live-weather-demo-link.com",
+    github:"https://github.com/yourusername/weather-dashboard"
+  },
+  { 
+    title:"Social Media Dashboard", 
+    desc:"A social media analytics & scheduling dashboard with multi-platform integration.", 
+    img:"social media dashbord.jpeg", 
+    tags:["React","D3.js","Express.js"],
+    demo:"https://your-live-social-dashboard.com",
+    github:"https://github.com/yourusername/social-dashboard"
+  },
+  { 
+    title:"Blog Platform", 
+    desc:"Full-featured blog platform with CMS, user management and SEO optimizations.", 
+    img:"blog website.jpeg", 
+    tags:["Next.js","Prisma","PostgreSQL"],
+    demo:"https://your-blog-platform-demo.com",
+    github:"https://github.com/yourusername/blog-platform"
+  },
+  { 
+    title:"E-commerce UI", 
+    desc:"Modern e-commerce admin UI with inventory controls and sales charts.", 
+    img:"Ecommerce.jpeg", 
+    tags:["Vue","Tailwind","Stripe"],
+    demo:"https://your-ecommerce-ui-demo.com",
+    github:"https://github.com/yourusername/ecommerce-ui"
+  },
+  { 
+    title:"Analytics Panel", 
+    desc:"Business intelligence dashboard with KPIs, charts and filters.", 
+    img:"Analytics Panel.jpeg", 
+    tags:["Python","Dash","Postgres"],
+    demo:"https://your-analytics-demo.com",
+    github:"https://github.com/yourusername/analytics-panel"
+  },
+  { 
+    title:"Portfolio Site", 
+    desc:"Personal portfolio with projects, contact form and interactive elements.", 
+    img:"Tahirzaman.png", 
+    tags:["HTML","CSS","JavaScript"],
+    demo:"https://my-porfolio-ten-bice.vercel.app/index.html",
+    github:"https://github.com/tahirzaman23ds14/tahirzaman23ds14"
+  }
+];
+
+const grid = document.getElementById('cardsGrid');
+const tpl = document.getElementById('cardTpl');
+
+function makeTagEl(text){
+  const div = document.createElement('div');
+  div.className = 'tag';
+  div.textContent = text;
+  return div;
+}
+
+// If you want to use the single image you sent for all cards, set this path:
+const fallbackImage = '/mnt/data/WhatsApp Image 2025-10-19 at 15.29.08_3066581b.jpg';
+
+cards.forEach((c, idx) => {
+  const node = tpl.content.cloneNode(true);
+  const art = node.querySelector('.card');
+  node.querySelector('.title').textContent = c.title;
+  node.querySelector('.desc').textContent = c.desc;
+
+  // image
+  const imgEl = node.querySelector('.thumb img');
+  imgEl.src = c.img ? c.img : fallbackImage;
+
+  // tags
+  const tagsWrap = node.querySelector('.tags');
+  tagsWrap.innerHTML = '';
+  c.tags.forEach(t => tagsWrap.appendChild(makeTagEl(t)));
+
+  // buttons now open actual URLs
+  const liveBtn = node.querySelector('.btn-live');
+  const gitBtn = node.querySelector('.btn-git');
+  liveBtn.addEventListener('click', () => window.open(c.demo, '_blank'));
+  gitBtn.addEventListener('click', () => window.open(c.github, '_blank'));
+
+  grid.appendChild(node);
+});

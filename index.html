@@ -32,7 +32,7 @@
     <nav class="nav-center" id="desktop-options">
       <a href="#" class="active">Home</a>
       <a href="#about">About</a>
-      <a href="#">Projects</a>
+      <a href="#projects">Projects</a>
       <a href="#">Contact</a>
     </nav>
 
@@ -63,7 +63,7 @@
     <div class="mobile-links">
       <a href="#" class="active">Home</a>
       <a href="#about">About</a>
-      <a href="#">Projects</a>
+      <a href="#projects">Projects</a>
       <a href="#">Contact</a>
     </div>
     <div class="mobile-social">
@@ -153,6 +153,45 @@
       </div>
     </section>
   </main>
+   <section id="projects" class="projects-section">
+    <div class="wrap">
+    <h2 class="section-title" >Projects</h2>
+    <div class="grid" id="cardsGrid">
+      <!-- Cards will be injected by JS -->
+    </div>
+  </div>
+
+  <template id="cardTpl">
+    <article class="card">
+      <div class="thumb">
+        <img src="" alt="project thumbnail" />
+      </div>
+      <div class="label-top">Demo</div>
+      <div class="card-body">
+        <div class="title">Project Title</div>
+        <div class="desc">Short descriptive text that explains the project in one or two lines. Keep it concise and meaningful.</div>
+
+        <div class="tags">
+          <div class="tag">JavaScript</div>
+          <div class="tag">Chart.js</div>
+          <div class="tag">API</div>
+        </div>
+
+        <div class="card-footer">
+          <div style="display:flex;gap:8px;">
+            <button class="btn primary btn-live">Live Demo</button>
+            <button class="btn ghost btn-git">GitHub</button>
+          </div>
+          <div style="font-size:12px;color:var(--muted)">Updated 2d</div>
+        </div>
+      </div>
+    </article>
+  </template>
+ </Section>
+
+
+
+
 
   <footer class="footer">
     <p>© <span id="year"></span> Amine - dev</p>
