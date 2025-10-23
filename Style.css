@@ -6,6 +6,7 @@
 }
 
 *{box-sizing:border-box; transition: all 0.25s ease;}
+
 body{
   margin:0;
   font-family: Inter, system-ui, Arial, sans-serif;
